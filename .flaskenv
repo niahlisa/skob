@@ -1,0 +1,4 @@
+FLASK_APP=authz
+FLASK_ENV=develpoment
+FLASK_DEBUG=1
+
