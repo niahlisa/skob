@@ -4,6 +4,7 @@ from authz.controller import UserController
 
 
 class UserResource(Resource):
+
     def get(self, user_id=None):
         if user_id is None:
             return UserController.get_user()
