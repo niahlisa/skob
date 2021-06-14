@@ -7,6 +7,10 @@ class Config:
     ENV = environ.get("SKOB_AUTHZ_ENV", "production")
     DEBUG = int(environ.get("SKOB_AUTHZ_DEBUG", "0"))
     TESTING = int(environ.get("SKOB_AUTHZ_TESTING", "0"))
+    SECRET = environ.get("SKOB_AUTHZ_SECRET", "VERY-HARD-SECRE-SECRET-CODE")
+    JWT_ALGO = environ.get("SKOB_AUTHZ_JWT_ALGO", "HS512")
+    JWT_TOKEN_LIFETIME = int(environ.get("SKOB_AUTHZ_JWT_TOKEN_LIFETIME", "86400")) # 86400 s = 1 day.
+
     ### database configuration ###
     SQLALCHEMY_DATABASE_URI = environ.get("SKOB_AUTHZ_DATABASE_URI", None)
     SQLALCHEMY_TRACK_MODIFICATIONS = TESTING

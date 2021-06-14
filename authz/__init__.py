@@ -20,7 +20,7 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)  # load configs from env variables.
     db.init_app(app)
-    ma.ini_app(app)
+    ma.init_app(app)
     mg.init_app(app, db)
     api.init_app(app)
     return app
