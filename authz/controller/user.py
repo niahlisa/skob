@@ -7,6 +7,7 @@ from authz.schema import UserSchema
 
 
 class UserController:
+
     def create_user():
         if request.content_type != "application/json":
             abort(415) # bad mediatype.
@@ -54,7 +55,11 @@ class UserController:
         if user is None:
             abort(404)
         user_schema = UserSchema()
+        return {
+            "user": user_schema.dump(user)
+        }, 200
 
+    @auth_required
     def update_user(user_id):
         if request.content_type != "application/json":
             abort(415)
@@ -82,7 +87,7 @@ class UserController:
             "user": User_Schema.dump(user)
         }, 200
 
-
+    @auth_required
     def delete_user(user_id):
         try:
             user = User.query.get(user_id)

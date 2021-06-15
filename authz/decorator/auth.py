@@ -1,4 +1,5 @@
 from functools import wraps
+
 from flask import abort, request
 from jwt import decode
 
@@ -19,7 +20,11 @@ def auth_required(f):
         if data["user"]["role"] in controller_roles:
             return f(*args, **kwargs)
         elif data["user"]["role"] == "member" and "member:user_id" in controller_roles:
-            print(locale())
+            user_id = args[f.__code__.co_varnames.index("user_id")]
+            if data["user"]["id"] == user_id:
+                return f(*args, **kwargs)
+            else:
+                abort(403)
         else:
             abort(403)
     return wrapper
