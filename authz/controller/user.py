@@ -5,7 +5,6 @@ from authz.decorator import auth_required
 from authz.model import User
 from authz.schema import UserSchema
 
-
 class UserController:
 
     def create_user():
@@ -18,7 +17,6 @@ class UserController:
             abort(400) # invalid request.
         if not data["username"] or not data["password"]:
             abort(400) # empty data
-
         try:
             user = User.query.filter_by(username=data["username"]).first() # select a user.
         except:
