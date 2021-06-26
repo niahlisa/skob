@@ -6,11 +6,9 @@ from flask_sqlalchemy import SQLAlchemy
 
 from authz.config import Config
 
-
 db = SQLAlchemy()
 ma = Marshmallow()
 mg = Migrate()
-
 api = Api()
 
 from authz import resource
